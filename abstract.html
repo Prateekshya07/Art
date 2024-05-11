@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js"></script>
+    <title>Document</title>
+    <style>
+    section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.main-content .painting-card .discount{
+    position: absolute;
+    padding: .5rem 1rem;
+    background-color:#dde5e9;
+    font-size: 1rem;
+    color:black;
+    z-index: 1;
+}
+
+.main-content .painting-card .discount:hover{
+    color:#8b8b8b ;
+}
+.painting-card {
+    width: 30%;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #3498db;
+}
+
+.painting-card:hover {
+    color:#ddd
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+.navbar {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Dropdown styles */
+    .dropdown {
+      position: relative;
+      margin-right: 20px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      min-width: 150px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      color: #333;
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f9f9f9;
+    }
+
+    /* Button styles */
+    .btn {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .dropdown:nth-child(1),
+    .dropdown:nth-child(2) {
+      margin-left: auto;
+    }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="dropdown">
+          <button class="btn" id="sortButton">Sort By</button>
+          <div class="dropdown-content" id="productList">
+            <a href="#" onclick="sortBy('priceHighToLow')">Price High to Low</a>
+            <a href="#" onclick="sortBy('priceLowToHigh')">Price Low to High</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="btn">Filter</button>
+          <div class="dropdown-content">
+            <a href="#">$0 - $25</a>
+            <a href="#">$25 - $50</a>
+            <a href="#">$50 - $100</a>
+            <a href="#">$100+</a>
+          </div>
+        </div>
+      </div>
+    <section class="main-content" id="main-content">
+        <div class="painting-card"onmouseover="showButtons(this)" onmouseout="hideButtons(this)">
+            <span class="discount">-5%</span>
+            <img src="abstrct1.jpg" alt="Painting 1">
+            <h3>Painting 1</h3>
+            <p id="amount">Price: $20</p>
+            <button class="wishlist-btn" onclick="addToWishlist()">Add to Wishlist</button>
+            <button class="add-to-bag-btn" onclick="addToBag()">Add to Bag</button>
+            <button class="buy-now-btn" onclick="redirectToCheckoutForm()">Buy Now</button>
+        </div>
+
+        <div class="painting-card">
+            <span class="discount">-15%</span>
+            <img src="abstrct2.jpg" alt="Painting 2">
+            <h3>Painting 1</h3>
+            <p id="amount">Price: $10</p>
+            <button class="wishlist-btn" onclick="addToWishlist()">Add to Wishlist</button>
+            <button class="add-to-bag-btn" onclick="addToBag()">Add to Bag</button>
+            <button class="buy-now-btn" onclick="redirectToCheckoutForm()">Buy Now</button>
+        </div>
+
+        <div class="painting-card">
+            <span class="discount">-10%</span>
+            <img src="abstrct3.jpg" alt="Painting 3">
+            <h3>Painting 1</h3>
+            <p id="amount">Price: $65</p>
+            <button class="wishlist-btn" onclick="addToWishlist()">Add to Wishlist</button>
+            <button class="add-to-bag-btn" onclick="addToBag()">Add to Bag</button>
+            <button class="buy-now-btn" onclick="redirectToCheckoutForm()">Buy Now</button>
+        </div>
+
+        <div class="painting-card">
+            <span class="discount">-20%</span>
+            <img src="abstrct1.jpg" alt="Painting 4">
+            <h3>Painting 1</h3>
+            <p id="amount">Price: $70</p>
+            <button class="wishlist-btn" onclick="addToWishlist()">Add to Wishlist</button>
+            <button class="add-to-bag-btn" onclick="addToBag()">Add to Bag</button>
+            <button class="buy-now-btn" onclick="redirectToCheckoutForm()">Buy Now</button>
+        </div>
+
+        <div class="painting-card">
+            <span class="discount">-14%</span>
+            <img src="abstrct2.jpg" alt="Painting 5">
+            <h3>Painting 1</h3>
+            <p id="amount">Price: $100</p>
+            <button class="wishlist-btn" onclick="addToWishlist()">Add to Wishlist</button>
+            <button class="add-to-bag-btn" onclick="addToBag()">Add to Bag</button>
+            <button class="buy-now-btn" onclick="redirectToCheckoutForm()">Buy Now</button>
+        </div>
+
+        <div class="painting-card">
+            <span class="discount">-7%</span>
+            <img src="abstrct3.jpg" alt="Painting 6">
+            <h3>Painting 1</h3>
+            <p id="amount">Price: $200</p>
+            <button class="wishlist-btn" onclick="addToWishlist()">Add to Wishlist</button>
+            <button class="add-to-bag-btn" onclick="addToBag()">Add to Bag</button>
+            <button class="buy-now-btn" onclick="redirectToCheckoutForm()">Buy Now</button>
+        </div>
+
+        <div class="painting-card">
+            <span class="discount">-9%</span>
+            <img src="abstrct1.jpg" alt="Painting 7">
+            <h3>Painting 1</h3>
+            <p id="amount">Price: $250</p>
+            <button class="wishlist-btn" onclick="addToWishlist()">Add to Wishlist</button>
+            <button class="add-to-bag-btn" onclick="addToBag()">Add to Bag</button>
+            <button class="buy-now-btn" onclick="redirectToCheckoutForm()">Buy Now</button>
+        </div>
+
+        <div class="painting-card">
+            <span class="discount">-13%</span>
+            <img src="abstrct2.jpg" alt="Painting 8">
+            <h3>Painting 1</h3>
+            <p id="amount">Price: $378</p>
+            <button class="wishlist-btn" onclick="addToWishlist()">Add to Wishlist</button>
+            <button class="add-to-bag-btn" onclick="addToBag()">Add to Bag</button>
+            <button class="buy-now-btn" onclick="redirectToCheckoutForm()">Buy Now</button>
+        </div>
+
+        <div class="painting-card">
+            <span class="discount">-25%</span>
+            <img src="abstrct3.jpg" alt="Painting 9">
+            <h3>Painting 1</h3>
+            <p id="amount">Price: $85</p>
+            <button class="wishlist-btn" onclick="addToWishlist()">Add to Wishlist</button>
+            <button class="add-to-bag-btn" onclick="addToBag()">Add to Bag</button>
+            <button class="buy-now-btn" onclick="redirectToCheckoutForm()">Buy Now</button>
+        </div>
+
+        <div class="painting-card">
+            <span class="discount">-21%</span>
+            <img src="abstrct1.jpg" alt="Painting 10">
+            <h3>Painting 1</h3>
+            <p id="amount">Price: $800</p>
+            <button class="wishlist-btn" onclick="addToWishlist()">Add to Wishlist</button>
+            <button class="add-to-bag-btn" onclick="addToBag()">Add to Bag</button>
+            <button class="buy-now-btn" onclick="redirectToCheckoutForm()">Buy Now</button>
+        </div>
+
+        <div class="painting-card">
+            <span class="discount">-11%</span>
+            <img src="abstrct2.jpg" alt="Painting 11">
+            <h3>Painting 1</h3>
+            <p id="amount">Price: $700</p>
+            <button class="wishlist-btn" onclick="addToWishlist()">Add to Wishlist</button>
+            <button class="add-to-bag-btn" onclick="addToBag()">Add to Bag</button>
+            <button class="buy-now-btn" onclick="redirectToCheckoutForm()">Buy Now</button>
+        </div>
+
+        <div class="painting-card">
+            <span class="discount">-12%</span>
+            <img src="abstrct3.jpg" alt="Painting 12">
+            <h3>Painting 1</h3>
+            <p id="amount">Price: $500</p>
+            <button class="wishlist-btn" onclick="addToWishlist()">Add to Wishlist</button>
+            <button class="add-to-bag-btn" onclick="addToBag()">Add to Bag</button>
+            <button class="buy-now-btn" onclick="redirectToCheckoutForm()">Buy Now</button>
+        </div>
+        </section>
+</body>
+
+</html>
